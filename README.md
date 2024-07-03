@@ -66,3 +66,28 @@ Adicionando annotation, apontando para o cert-manager
   -ingress-eks.yaml
 
 Agora temos o Ingress com certificado
+
+#### Instalando o Kube-Prometheus
+
+O primeiro passo é clonar o repositório
+
+#git clone https://github.com/prometheus-operator/kube-prometheus
+
+Após isso, devemos acessar o diretório, e rodar o setup, a fim de aplicar os manifestos
+
+#cd kube-prometheus
+#kubectl create -f manifests/setup
+
+Vamos aplicar os manifestos.  Após isso, teremos o Prometheus e o AlertManager
+
+#kubectl apply -f manifests/
+
+O comando para verificar se os CRDs (Custom Resource Definitions) foram instalados é o seguinte:
+
+#kubectl get servicemonitors -A
+
+Já temos a Stack do Kube-Prometheus (Prometheus, Alertmanager, Blackbox Exporter e Grafana)
+
+Verificando se tudo foi instalado
+
+#kubectl get pods -n monitoring
